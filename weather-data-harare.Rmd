@@ -50,7 +50,7 @@ The weather data available through this weather station is currently being used 
 The weather station is installed in CIMMYT Southern African Regional Office, a highland area with high potential for agricultural production, in the outskirts North of Harare (GPS coordinates: -17.72 S, 31.02 E, 1490 m above sea level). The CIMMYT experimental station is part of the research farm from the University of Zimbabwe. The main crops cultivated in the surrounding farms include maize, wheat, potato, and a range of horticultural crops.
 
 ```{r, echo=FALSE, fig.align="center", fig.height=3.25, out.width="100%"}
-location <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/Weather Data Harare.csv')
+location <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/weather-data-harare.csv')
 leaflet(location) %>% 
   addProviderTiles(providers$Esri.WorldImagery) %>%
   addCircleMarkers()
@@ -64,7 +64,7 @@ The region is characterized by a Dry-winter Subtropical Highland Climate (Cwb), 
 ```{r, echo=FALSE, fig.height=10, fig.asp=0.618, out.width="100%", fig.align="center"}
 
 # plot 1
-data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/Weather Data Harare.csv')
+data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/weather-data-harare.csv')
 data_aggr <- aggregate(data[c('IRRAD_MJm2day', 'RELHUM_mean_perc')], by=list('year'=data$Year, 'month'=data$Month), FUN=mean, na.rm=T)
 ts_data_rad <- xts(data[,15], order.by=as.Date(data[,8], "%Y-%m-%d"))
 ts_data_hum <- xts(data[,28], order.by=as.Date(data[,8], "%Y-%m-%d"))
@@ -78,7 +78,7 @@ rad <- dygraph(ts_rad, group=ts_rad) %>%
   dyHighlight(highlightCircleSize=4, highlightSeriesBackgroundAlpha = 0.5, highlightSeriesOpts = list(), hideOnMouseOut = TRUE)
 
 # plot 2
-data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/Weather Data Harare.csv')
+data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/weather-data-harare.csv')
 data_aggr <- aggregate(data[c('TMIN', 'TMAX')], by=list('year'=data$Year, 'month'=data$Month), FUN=mean, na.rm=T)
 ts_data_tmin <- xts(data[,17], order.by=as.Date(data[,8], "%Y-%m-%d"))
 ts_data_tmax <- xts(data[,16], order.by=as.Date(data[,8], "%Y-%m-%d"))
@@ -94,7 +94,7 @@ temp <- dygraph(ts_temp, group=ts_rad) %>%
   dyHighlight(highlightCircleSize=4, highlightSeriesBackgroundAlpha = 0.5, highlightSeriesOpts = list(), hideOnMouseOut = TRUE)
 
 # plot 3
-data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/Weather Data Harare.csv')
+data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/weather-data-harare.csv')
 data_aggr <- aggregate(data[c('RAIN_mm', 'ET0_mm')], by=list('year'=data$Year, 'month'=data$Month), FUN=mean, na.rm=T)
 ts_data_rain <- xts(data[,21], order.by=as.Date(data[,8], "%Y-%m-%d"))
 ts_data_et0 <- xts(data[,23], order.by=as.Date(data[,8], "%Y-%m-%d"))
@@ -120,7 +120,7 @@ combineWidgets(rad, temp, rain, nrow=3, ncol=1, rowsize=c(1,1,1), height=720)
 # radiation & rain -------------------------------------------------------------
 
 # load data
-data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/Weather Data Harare.csv')
+data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/weather-data-harare.csv')
 
 # january - december
 data_yr <- data
@@ -247,7 +247,7 @@ p4 <- dygraph(data_plot_tmin) %>%
 
 # number of days ---------------------------------------------------------------
 
-data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/Weather Data Harare.csv')
+data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/weather-data-harare.csv')
 heat_days <- subset(data, TMAX > 30)
 heat_days$unique <- 1
 heat_days <- aggregate(heat_days[c('unique')], by=list('year'=heat_days$Year), FUN=sum, na.rm=T)
@@ -318,7 +318,7 @@ combineWidgets(p1, p2, p3, p4, p5, p6, nrow=3, ncol=2, rowsize=c(1), height=550+
 
 ```{r, echo=FALSE, fig.height=10, fig.asp=0.3, out.width="100%", fig.align="center"}
 
-data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/Weather Data Harare.csv')
+data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/weather-data-harare.csv')
 
 # SRAD
 srad <- data[c('Y_year', 'DOY', 'IRRAD_MJm2day')]
@@ -410,7 +410,7 @@ combineWidgets(cum_rain, gdd_val, cum_et, cum_srad, nrow=2, ncol=2, rowsize=c(1)
 # **Table with complete data**
 
 ```{r, echo=FALSE, warning=FALSE}
-data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/Weather Data Harare.csv')
+data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/weather-data-harare.csv')
 data <- data[c('Station', 'date', 'Day', 'Month', 'Year', 'DOY', 'IRRAD_MJm2day', 
                'RELHUM_mean_perc', 'TMAX', 'TMIN', 'GDD', 'RAIN_mm', 'ET0_mm', 
                'LAT', 'LONG', 'Contact')]
