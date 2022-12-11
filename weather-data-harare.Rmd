@@ -412,8 +412,8 @@ combineWidgets(cum_rain, gdd_val, cum_et, cum_srad, nrow=2, ncol=2, rowsize=c(1)
 ```{r, echo=FALSE, warning=FALSE}
 data <- read.csv('C:/Users/JSILVA/OneDrive - CIMMYT/Desktop/Yield Potential/3-MAIZE-Zimbabwe/Maina/CIMMYT SARO/2-rmarkdown/weather-data-harare.csv')
 data <- data[c('Station', 'date', 'Day', 'Month', 'Year', 'DOY', 'IRRAD_MJm2day', 
-               'RELHUM_mean_perc', 'TMAX', 'TMIN', 'GDD', 'RAIN_mm', 'ET0_mm', 
-               'LAT', 'LONG', 'Contact')]
+               'RELHUM_mean_perc', 'TMAX', 'TMIN', 'GDD', 'RAIN_mm', 'ET0_mm',
+               'WIND_ms', 'VAP_kPa', 'LAT', 'LONG', 'Contact')]
 colnames(data)[7] <- 'SRAD'
 colnames(data)[8] <- 'RELHUM'
 round_df <- function(x, digits) {
